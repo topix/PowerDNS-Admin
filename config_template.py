@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # BASIC APP CONFIG
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'We are the world'
-BIND_ADDRESS = '127.0.0.1'
+BIND_ADDRESS = '0.0.0.0'
 PORT = 9393
 LOGIN_TITLE = "PDNS"
 
@@ -13,9 +13,10 @@ TIMEOUT = 10
 
 # LOG CONFIG
 LOG_LEVEL = 'DEBUG'
-LOG_FILE = 'logfile.log'
+#LOG_FILE = 'logfile.log'
+#LOG_FILE = '/dev/stdout'
 # For Docker, leave empty string
-#LOG_FILE = ''
+LOG_FILE = ''
 
 # Upload
 UPLOAD_DIR = os.path.join(basedir, 'upload')
@@ -23,12 +24,12 @@ UPLOAD_DIR = os.path.join(basedir, 'upload')
 # DATABASE CONFIG
 #You'll need MySQL-python
 SQLA_DB_USER = 'powerdnsadmin'
-SQLA_DB_PASSWORD = 'powerdnsadminpassword'
-SQLA_DB_HOST = 'mysqlhostorip'
-SQLA_DB_NAME = 'powerdnsadmin'
+SQLA_DB_PASSWORD = 'PowerDNSAdminPassword'
+SQLA_DB_HOST = '10.50.0.31'
+SQLA_DB_NAME = 'powerdns-admin'
 
 #MySQL
-SQLALCHEMY_DATABASE_URI = 'mysql://'+SQLA_DB_USER+':'\
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://'+SQLA_DB_USER+':'\
     +SQLA_DB_PASSWORD+'@'+SQLA_DB_HOST+'/'+SQLA_DB_NAME
 #SQLite
 #SQLALCHEMY_DATABASE_URI = 'sqlite:////path/to/your/pdns.db'
@@ -70,9 +71,9 @@ BASIC_ENABLED = True
 SIGNUP_ENABLED = True
 
 # POWERDNS CONFIG
-PDNS_STATS_URL = 'http://172.16.214.131:8081/'
-PDNS_API_KEY = 'you never know'
-PDNS_VERSION = '3.4.7'
+PDNS_STATS_URL = 'http://powerdns-server:8081/'
+PDNS_API_KEY = 'PowerDNSAPIKey'
+PDNS_VERSION = '4.0.3'
 
 # RECORDS ALLOWED TO EDIT
 RECORDS_ALLOW_EDIT = ['A', 'AAAA', 'CNAME', 'SPF', 'PTR', 'MX', 'TXT']
